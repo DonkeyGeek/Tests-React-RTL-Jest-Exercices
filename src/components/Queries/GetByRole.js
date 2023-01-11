@@ -12,10 +12,15 @@ function GetByRole() {
           />
         </article>
     </div>
+
+    <h4>Inscription</h4>
     <form>
       <div>
-        <label htmlFor='name'>Nom</label>
-        <input type="text" id="name" />
+        <label htmlFor='firstName'>Prénom</label>
+        <input type="text" id="firstName" />
+
+        <label htmlFor='lastName'>Nom</label>
+        <input type="text" id="lastName" />
       </div>
 
       <div>
@@ -34,6 +39,13 @@ function GetByRole() {
         <label>
           <input type="checkbox" id="terms and conditions" />
           J'accepte les termes et conditions
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <input type="checkbox" id="newsletter" />
+          Je m'abonne à la newsletter
         </label>
       </div>
 
