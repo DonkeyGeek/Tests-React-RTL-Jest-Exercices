@@ -1,10 +1,10 @@
 import './App.css';
-import GetByRole from './components/Queries/GetByRole';
+import GetByPlaceholderText from './components/Queries/GetByPlaceholderText';
 
 function App() {
   return (
     <div className="App">
-      <GetByRole />
+      <GetByPlaceholderText />
     </div>
   );
 }
