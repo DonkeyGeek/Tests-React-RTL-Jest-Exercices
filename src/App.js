@@ -1,10 +1,10 @@
 import './App.css';
-import GetByPlaceholderText from './components/Queries/GetByPlaceholderText';
+import GetByText from './components/Queries/GetByText';
 
 function App() {
   return (
     <div className="App">
-      <GetByPlaceholderText />
+      <GetByText />
     </div>
   );
 }
