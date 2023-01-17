@@ -1,10 +1,10 @@
 import './App.css';
-import GetByText from './components/Queries/GetByText';
+import GetByDisplayValue from './components/Queries/GetByDisplayValue';
 
 function App() {
   return (
     <div className="App">
-      <GetByText />
+      <GetByDisplayValue />
     </div>
   );
 }
