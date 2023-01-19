@@ -1,10 +1,10 @@
 import './App.css';
-import GetByAltText from './components/Queries/GetByAltText';
+import GetByTitle from './components/Queries/GetByTitle';
 
 function App() {
   return (
     <div className="App">
-      <GetByAltText />
+      <GetByTitle />
     </div>
   );
 }
