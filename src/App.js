@@ -1,10 +1,10 @@
 import './App.css';
-import GetByDisplayValue from './components/Queries/GetByDisplayValue';
+import GetByAltText from './components/Queries/GetByAltText';
 
 function App() {
   return (
     <div className="App">
-      <GetByDisplayValue />
+      <GetByAltText />
     </div>
   );
 }
