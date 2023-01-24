@@ -1,10 +1,10 @@
 import './App.css';
-import GetByTitle from './components/Queries/GetByTitle';
+import GetByTestId from './components/Queries/GetByTestId';
 
 function App() {
   return (
     <div className="App">
-      <GetByTitle />
+      <GetByTestId />
     </div>
   );
 }
