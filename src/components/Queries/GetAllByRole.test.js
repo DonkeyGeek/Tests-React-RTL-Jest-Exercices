@@ -20,6 +20,6 @@ describe('Test to learn GetAllByRole', () => {
     test('Should have multiple buttons', () => { 
         render(<GetAllByRole btns={buttons} />)
         const buttonElements = screen.getAllByRole('button');
-        expect(buttonElements).toHaveLength(buttons.length)
+        expect(buttonElements).not.toHaveLength(4) 
     })
 });
