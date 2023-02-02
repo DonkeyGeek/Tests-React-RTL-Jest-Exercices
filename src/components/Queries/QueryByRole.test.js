@@ -12,6 +12,7 @@ describe('GetBy Vs QueryBy', () => {
       console.log(buttonThemeLight) // NULL
       // expect(buttonThemeLight).not.toBeInTheDocument()
       // expect(buttonThemeLight).toBeFalsy()
-      expect(buttonThemeLight).not.toBeTruthy()
+      // expect(buttonThemeLight).not.toBeTruthy()
+      expect(buttonThemeLight).toBeNull() 
   });
 })

@@ -1,10 +1,10 @@
 import './App.css';
-import QueryByRole from './components/Queries/QueryByRole';
+import FindByRole from './components/Queries/FindByRole';
 
 function App() {
   return (
     <div className="App">
-      <QueryByRole />
+      <FindByRole />
     </div>
   );
 }
