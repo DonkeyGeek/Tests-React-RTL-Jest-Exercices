@@ -51,4 +51,10 @@ describe('Learn User Interactions', () => {
         const buttonElement = screen.getByRole('button', { name: /Vous avez cliqué \d+ fois/})
         expect(buttonElement).toHaveTextContent('Vous avez cliqué 0 fois')
     })
+
+    test("Couleur initiale du bouton Orange", () => {
+        render(<IncrementCount />)
+        const buttonElement = screen.getByRole('button', { name: /Vous avez cliqué \d+ fois/})
+        expect(buttonElement).toHaveStyle({'background-color': 'orange'}) 
+    })
 });
