@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 const btnStyle = {
     padding: '5px',
     width: '200px',
@@ -11,8 +11,11 @@ function IncrementCount() {
     const [count, setCount] = useState(0)
     const [btnColor, setBtnColor] = useState('orange')
 
+    const color = btnColor === 'orange' ? 'cyan' : 'orange';
+
     const handleClick = () => {
         setCount(count + 1)
+        setBtnColor(color)
     }
 
   return (

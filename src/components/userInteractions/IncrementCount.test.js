@@ -58,7 +58,7 @@ describe('Learn User Interactions', () => {
         expect(buttonElement).toHaveStyle({'background-color': 'orange'}) 
     })
 
-    test("Compteur et bouton affichent 1 après 1 clic", async () => {
+    test("Compteur et bouton affichent 1 après 1 clic + couleur du bouton change en cyan", async () => {
         const user = userEvent.setup()
         render(<IncrementCount />)
         const buttonElement = screen.getByRole('button', { name: /Vous avez cliqué \d+ fois/})
@@ -67,5 +67,7 @@ describe('Learn User Interactions', () => {
 
         const headingElement = screen.getByRole('heading')
         expect(headingElement).toHaveTextContent('1')
+
+        expect(buttonElement).toHaveStyle({'background-color': 'cyan'})
     })
 });
