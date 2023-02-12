@@ -1,4 +1,5 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
+// import userEvent from '@testing-library/user-event';
 
 /*
     clear: [Function: clear],
@@ -32,6 +33,22 @@ import { render } from "@testing-library/react";
 
 import IncrementCount from "./IncrementCount";
 
-describe('Learn Mouse Pointer Interactions', () => {
-    render(<IncrementCount />)
+describe('Learn User Interactions', () => {
+    test("Le compteur et le bouton s'affichent correctement", () => {
+        render(<IncrementCount />)
+        const headingElement = screen.getByRole('heading')
+        expect(headingElement).toBeInTheDocument()
+
+        const buttonElement = screen.getByRole('button', { name: /Vous avez cliqué \d+ fois/})
+        expect(buttonElement).toBeInTheDocument()
+    })
+
+    test("Le compteur et le bouton affichent 0 avant le clic", () => {
+        render(<IncrementCount />)
+        const headingElement = screen.getByRole('heading')
+        expect(headingElement).toHaveTextContent('0') // Test pass
+
+        const buttonElement = screen.getByRole('button', { name: /Vous avez cliqué \d+ fois/})
+        expect(buttonElement).toHaveTextContent('Vous avez cliqué 0 fois')
+    })
 });
