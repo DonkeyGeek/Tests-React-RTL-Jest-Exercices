@@ -70,4 +70,17 @@ describe('Learn User Interactions', () => {
 
         expect(buttonElement).toHaveStyle({'background-color': 'cyan'})
     })
+
+    test("Compteur et bouton affichent 2 après 2 clics + couleur du bouton change en orange", async () => {
+        const user = userEvent.setup()
+        render(<IncrementCount />)
+        const buttonElement = screen.getByRole('button', { name: /Vous avez cliqué \d+ fois/})
+        await user.dblClick(buttonElement)
+        expect(buttonElement).toHaveTextContent('Vous avez cliqué 2 fois')
+
+        const headingElement = screen.getByRole('heading')
+        expect(headingElement).toHaveTextContent('2')
+
+        expect(buttonElement).toHaveStyle({'background-color': 'orange'})
+    })
 });
