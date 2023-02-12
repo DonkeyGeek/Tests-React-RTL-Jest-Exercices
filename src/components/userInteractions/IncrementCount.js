@@ -11,10 +11,19 @@ function IncrementCount() {
     const [count, setCount] = useState(0)
     const [btnColor, setBtnColor] = useState('orange')
 
+    const handleClick = () => {
+        setCount(count + 1)
+    }
+
   return (
     <>
         <h1>{count}</h1>
-        <button style={{...btnStyle, backgroundColor: btnColor }}>Vous avez cliqué {count} fois</button>
+        <button 
+           style={{...btnStyle, backgroundColor: btnColor }}
+           onClick={handleClick}
+        >
+            Vous avez cliqué {count} fois
+        </button>
     </>
   )
 }
