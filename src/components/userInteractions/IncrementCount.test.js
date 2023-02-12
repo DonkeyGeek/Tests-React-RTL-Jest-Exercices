@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-// import userEvent from '@testing-library/user-event';
+import { render, screen } from "@testing-library/react";
+import userEvent from '@testing-library/user-event';
 
 /*
     clear: [Function: clear],
@@ -58,10 +58,11 @@ describe('Learn User Interactions', () => {
         expect(buttonElement).toHaveStyle({'background-color': 'orange'}) 
     })
 
-    test("Compteur et bouton affichent 1 après 1 clic", () => {
+    test("Compteur et bouton affichent 1 après 1 clic", async () => {
+        const user = userEvent.setup()
         render(<IncrementCount />)
         const buttonElement = screen.getByRole('button', { name: /Vous avez cliqué \d+ fois/})
-        fireEvent.click(buttonElement)
+        await user.click(buttonElement)
         expect(buttonElement).toHaveTextContent('Vous avez cliqué 1 fois')
 
         const headingElement = screen.getByRole('heading')
