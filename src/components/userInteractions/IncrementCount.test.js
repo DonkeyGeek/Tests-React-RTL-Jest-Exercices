@@ -34,13 +34,17 @@ import userEvent from '@testing-library/user-event';
 import IncrementCount from "./IncrementCount";
 
 describe('Learn User Interactions', () => {
-    test("Le compteur et le bouton s'affichent correctement", () => {
+    test("Le compteur et le bouton ainsi que le checkbox s'affichent correctement", () => {
         render(<IncrementCount />)
         const headingElement = screen.getByRole('heading')
         expect(headingElement).toBeInTheDocument()
 
         const buttonElement = screen.getByRole('button', { name: /Vous avez cliqué \d+ fois/})
         expect(buttonElement).toBeInTheDocument()
+
+        const checkbox = screen.getByRole('checkbox', { name: /J'accepte les termes et conditions/i})
+        expect(checkbox).toBeInTheDocument()
+        expect(checkbox).not.toBeChecked()
     })
 
     test("Le compteur et le bouton affichent 0 avant le clic", () => {
@@ -52,6 +56,12 @@ describe('Learn User Interactions', () => {
         expect(buttonElement).toHaveTextContent('Vous avez cliqué 0 fois')
     })
 
+    test('Bouton désactivé avant le clic', () => {
+        render(<IncrementCount />)
+        const buttonElement = screen.getByRole('button', { name: /vous avez cliqué \d+ fois/i})
+        expect(buttonElement).not.toBeEnabled()
+    })
+
     test("Couleur initiale du bouton Orange", () => {
         render(<IncrementCount />)
         const buttonElement = screen.getByRole('button', { name: /Vous avez cliqué \d+ fois/})
@@ -61,7 +71,12 @@ describe('Learn User Interactions', () => {
     test("Compteur et bouton affichent 3 après 1 clic + un dblClick + couleur du bouton change en cyan", async () => {
         const user = userEvent.setup()
         render(<IncrementCount />)
+        const checkbox = screen.getByRole('checkbox', { name: /J'accepte les termes et conditions/i})
+        await user.click(checkbox)
+
         const buttonElement = screen.getByRole('button', { name: /Vous avez cliqué \d+ fois/})
+        expect(buttonElement).toBeEnabled()
+
         await user.click(buttonElement)
         expect(buttonElement).toHaveTextContent('Vous avez cliqué 1 fois')
         const headingElement = screen.getByRole('heading')
@@ -78,7 +93,11 @@ describe('Learn User Interactions', () => {
     test("Compteur et bouton affichent 2 après 2 clics + couleur du bouton change en orange", async () => {
         const user = userEvent.setup()
         render(<IncrementCount />)
+        const checkbox = screen.getByRole('checkbox', { name: /j'accepte les termes et conditions/i})
+        await user.click(checkbox)
         const buttonElement = screen.getByRole('button', { name: /Vous avez cliqué \d+ fois/})
+        expect(buttonElement).toBeEnabled()
+        
         await user.dblClick(buttonElement)
         expect(buttonElement).toHaveTextContent('Vous avez cliqué 2 fois')
 
