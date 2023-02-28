@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 
 /*
@@ -18,7 +18,7 @@ import userEvent from '@testing-library/user-event';
 
     1) Convinience APIs
     *******************
-    Intéractions avec la souris
+    Interactions avec la souris
     - click()
     - dblClick()
     - tripleClick
@@ -117,5 +117,28 @@ describe('Learn User Interactions', () => {
         expect(headingElement).toHaveTextContent('2')
 
         expect(buttonElement).toHaveStyle({'background-color': 'orange'})
+    })
+
+    test('Le popup est caché avant le mouseOver', () => {
+        render(<IncrementCount />)
+        const popup = screen.queryByText(/velit voluptatibus quos excepturi/i) // substring match + ignore case
+        expect(popup).not.toBeInTheDocument()
+        expect(popup).toBeNull()
+    })
+
+    test("Popup s'affiche après MouseOver et s'efface après le MouseOut", async () => {
+        const user = userEvent.setup()
+        render(<IncrementCount />)
+        // Hover
+        const termsAndConditions = screen.getByText(/les termes et conditions/i)
+        expect(termsAndConditions).toBeInTheDocument()
+        // await user.hover(termsAndConditions)
+        await act(() => user.hover(termsAndConditions))
+        const popup = screen.queryByText(/velit voluptatibus quos excepturi/i)
+        expect(popup).toBeInTheDocument()
+
+        // UNHOVER
+        await act(() => user.unhover(termsAndConditions))
+        expect(popup).not.toBeInTheDocument()
     })
 });
