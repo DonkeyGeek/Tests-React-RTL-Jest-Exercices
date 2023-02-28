@@ -1,36 +1,6 @@
 import { act, render, screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 
-/*
-    clear: [Function: clear],
-
-    copy: [Function: copy],
-    cut: [Function: cut],
-    deselectOptions: [Function: deselectOptions],
-    keyboard: [AsyncFunction: keyboard],
-    paste: [Function: paste],
-    pointer: [AsyncFunction: pointer],
-    selectOptions: [Function: selectOptions],
-    tab: [Function: tab],
-    type: [Function: type],
-    upload: [Function: upload],
-    setup: [Function: setupMain]
-
-    1) Convinience APIs
-    *******************
-    Interactions avec la souris
-    - click()
-    - dblClick()
-    - tripleClick
-    Les mouvements de la souris 
-    - hover()
-    - unhover()
-
-    2) Pointer API
-    Voir la doc : https://testing-library.com/docs/user-event/pointer
-
-*/
-
 import IncrementCount from "./IncrementCount";
 
 describe('Learn User Interactions', () => {
@@ -140,5 +110,19 @@ describe('Learn User Interactions', () => {
         // UNHOVER
         await act(() => user.unhover(termsAndConditions))
         expect(popup).not.toBeInTheDocument()
+    })
+
+    test("Focus s'effectue sur checkbox après TAB. Ensuite, sur le bouton après checkbox coché", async () => {
+        const user = userEvent.setup()
+        render(<IncrementCount />)
+        const checkbox = screen.getByRole('checkbox', { name: /j'accepte les termes et conditions/i})
+        const buttonElement = screen.getByRole('button', { name: /Vous avez cliqué \d+ fois/})
+        expect(checkbox).not.toHaveFocus()
+        expect(buttonElement).not.toHaveFocus()
+        await user.tab()
+        expect(checkbox).toHaveFocus()
+        await user.click(checkbox)
+        await user.tab()
+        expect(buttonElement).toHaveFocus()
     })
 });
