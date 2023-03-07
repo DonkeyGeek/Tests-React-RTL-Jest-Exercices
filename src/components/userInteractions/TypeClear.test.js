@@ -3,9 +3,9 @@ import userEvent from '@testing-library/user-event';
 import TypeClear from './TypeClear';
 
 describe('Exercice type & clear', () => {
-    const user = userEvent.setup();
 
     test('taper dans un champ de saisie', async () => { 
+        const user = userEvent.setup();
         render(<TypeClear />)
         const inputElement = screen.getByRole('textbox')
         expect(inputElement).toHaveValue('Bonjour')
