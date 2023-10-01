@@ -1,6 +1,6 @@
 # My-APP (Exercices Tests React avec RTL & Jest)
 
-My-APP (Exercices Tests React avec RTL & Jest) a small React application for beginners coded in my course named "Maîtrisez les Tests REACT.js avec RTL et JEST" accessible sur [Udemy](https://www.udemy.com/course/tests-react-js-avec-react-testing-library-et-jest/?referralCode=191B7D4D9CEEEA7204CD).  et sur [Success Coder](https://successcoder.com/courses/). 
+My-APP (Exercices Tests React avec RTL & Jest) a small React application for beginners coded in my course named "Maîtrisez les Tests REACT.js avec RTL et JEST" accessible on [Udemy](https://www.udemy.com/course/tests-react-js-avec-react-testing-library-et-jest/?referralCode=191B7D4D9CEEEA7204CD). and on [Success Coder](https://successcoder.com/courses/). 
 
 The purpose of this application is to perform some introductory exercises on the basic concepts of testing with React Testing Library and Jest.
 
